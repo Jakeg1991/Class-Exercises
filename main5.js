@@ -11,7 +11,7 @@ class Product {
 	}
 
 	toString() {
-		return this.name + " " + this.price + "€";
+		return this.name + " " + "€" + this.price;
 	}
 }
 
@@ -36,16 +36,40 @@ class ShoppingCart {
 	toString() {
 		return "cart with: " + this.products;
 	}
-}
+    
+    totalPrice() {
+        let total = [];
+        let discount = 0.9;
+        for (let i = 0; i < this.products.length; i++) {
+            total.push(this.products[i].price)
+        }
+        if (total.length <= 5) {
+            console.log("No discount has been applied")
+            return "Total= €"+total.reduce((a, b) => a + b, 0)
+        } else {
+            console.log("Discount has been applied");
+            return ("Total= €"+(total.reduce((a, b) => a + b, 0)) * discount);
+        }
+    }
+    }
 
 
 // We can create a cart and add the products we created before
 
 let cart = new ShoppingCart();
 cart.addProduct(p1);
+cart.addProduct(p1);
+cart.addProduct(p2);
 cart.addProduct(p2);
 cart.addProduct(p3);
+cart.addProduct(p3);
+
+
+
 
 console.log("We have a " + cart);
+
+console.log(cart.totalPrice());
+console.log(cart);
 
 
