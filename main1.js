@@ -29,7 +29,7 @@ var car = {
 
 // Try methods
 
-console.log(car.status());
+console.log(car.status()); 
 car.accelerate(50);
 console.log(car.status());
 car.accelerate(100);
